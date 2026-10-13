@@ -10,5 +10,6 @@ services:
     build:
       args:
         ENABLE_CLAUDE_CLI: "true"
-    volumes:
-      - ${HOME}/.claude:/app/.claude-host:ro
+    # Host ~/.claude mount removed (local change): it exposed every Claude Code
+    # transcript, memory and rule file to the agent. The CLI logs in inside the
+    # container instead; its credentials live in the goclaw-data volume.
